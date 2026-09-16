@@ -1,0 +1,1065 @@
+/* =========================================
+   SECURE THE SMART HOME
+   IoT Cybersecurity Challenge
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #020914;
+  --panel: #071827;
+  --panel2: #0a2033;
+  --border: #17405b;
+
+  --cyan: #20c7ff;
+  --blue: #167dff;
+  --green: #28df78;
+  --red: #ff405c;
+  --orange: #ff9f32;
+  --yellow: #ffd45c;
+
+  --white: #f4fbff;
+  --muted: #8ca9bb;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--white);
+
+  background: radial-gradient(
+    circle at 50% 0%,
+    #0d3553 0%,
+    #041321 38%,
+    #020914 75%
+  );
+
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.game-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 30px;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  min-height: calc(100vh - 40px);
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* =========================================
+   START SCREEN
+   ========================================= */
+
+#startScreen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.brand {
+  margin-bottom: 20px;
+}
+
+.shield {
+  font-size: 58px;
+  margin-bottom: 8px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.brand h1 {
+  font-size: clamp(38px, 5vw, 65px);
+  letter-spacing: -2px;
+}
+
+.brand h1 span {
+  color: var(--cyan);
+}
+
+.subtitle {
+  margin-top: 8px;
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+/* =========================================
+   MISSION WARNING
+   ========================================= */
+
+.mission-box {
+  width: min(900px, 100%);
+  padding: 20px 25px;
+  border: 1px solid #8b3541;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 64, 92, 0.12),
+    rgba(7, 24, 39, 0.95)
+  );
+
+  margin-bottom: 20px;
+}
+
+.warning-icon {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.mission-box h2 {
+  color: var(--red);
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.mission-box p {
+  color: #b9cbd7;
+  margin: 8px auto 0;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   DEVICE PREVIEW
+   ========================================= */
+
+.start-devices {
+  width: min(900px, 100%);
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.device-preview {
+  background: rgba(7, 24, 39, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 8px;
+}
+
+.device-preview span {
+  display: block;
+  font-size: 31px;
+  margin-bottom: 6px;
+}
+
+.device-preview p {
+  font-size: 12px;
+  color: #c3d3dd;
+}
+
+/* =========================================
+   INSTRUCTIONS
+   ========================================= */
+
+.instructions {
+  width: min(900px, 100%);
+  padding: 20px;
+
+  background: rgba(7, 24, 39, 0.94);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  margin-bottom: 20px;
+}
+
+.instructions h3 {
+  color: var(--cyan);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.instructions > p {
+  color: #b8cad6;
+  font-size: 14px;
+}
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+
+  margin-top: 16px;
+}
+
+.rules div {
+  background: #091d2e;
+  padding: 11px;
+  border-radius: 10px;
+}
+
+.rules strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 20px;
+}
+
+.rules span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+/* =========================================
+   MAIN BUTTON
+   ========================================= */
+
+.main-btn {
+  border: none;
+  min-width: 250px;
+
+  padding: 16px 28px;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.main-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 0 30px rgba(32, 199, 255, 0.25);
+
+  filter: brightness(1.1);
+}
+
+/* =========================================
+   GAME SCREEN
+   ========================================= */
+
+#gameScreen {
+  flex-direction: column;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 13px 20px;
+
+  background: rgba(7, 24, 39, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-title > span {
+  font-size: 29px;
+}
+
+.game-title strong {
+  display: block;
+  font-size: 15px;
+}
+
+.game-title small {
+  display: block;
+  color: var(--cyan);
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-top: 3px;
+}
+
+.stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat {
+  min-width: 95px;
+  text-align: center;
+
+  padding: 7px 12px;
+
+  background: #0a2033;
+  border-radius: 9px;
+}
+
+.stat small {
+  display: block;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.stat strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+/* =========================================
+   ATTACK WARNING
+   ========================================= */
+
+.attack-warning {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 10px;
+
+  padding: 11px 17px;
+
+  border-radius: 12px;
+  border: 1px solid #80343f;
+
+  background: rgba(255, 64, 92, 0.08);
+}
+
+.warning-pulse {
+  font-size: 25px;
+  animation: pulse 1s infinite;
+}
+
+.attack-warning strong {
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.attack-warning p {
+  color: #c5d2db;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* =========================================
+   HACKER PROGRESS
+   ========================================= */
+
+.hacker-section {
+  margin-top: 10px;
+
+  padding: 12px 16px;
+
+  background: rgba(7, 24, 39, 0.96);
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.meter-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 7px;
+}
+
+.meter-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.meter-heading span {
+  font-size: 18px;
+}
+
+.meter-heading strong {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+#hackerPercent {
+  color: var(--orange);
+  font-size: 15px;
+}
+
+.hacker-meter {
+  width: 100%;
+  height: 14px;
+
+  background: #101a24;
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.hacker-fill {
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(90deg, var(--yellow), var(--orange), var(--red));
+
+  border-radius: 20px;
+
+  transition: width 0.4s ease;
+}
+
+.meter-labels {
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--muted);
+  font-size: 8px;
+
+  margin-top: 5px;
+}
+
+/* =========================================
+   SMART HOME
+   ========================================= */
+
+.home-panel {
+  margin-top: 10px;
+
+  padding: 12px 16px;
+
+  background: rgba(7, 24, 39, 0.96);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.section-title {
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 10px;
+}
+
+.devices {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.device-card {
+  position: relative;
+
+  text-align: center;
+
+  padding: 10px 8px;
+
+  min-height: 95px;
+
+  background: #091e30;
+
+  border: 1px solid #1b4a68;
+  border-radius: 11px;
+
+  transition: 0.3s;
+}
+
+.device-card:hover {
+  border-color: var(--cyan);
+
+  transform: translateY(-2px);
+}
+
+.device-status {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+
+  color: var(--green);
+  font-size: 7px;
+  font-weight: bold;
+}
+
+.device-icon {
+  font-size: 29px;
+  margin-top: 5px;
+}
+
+.device-card strong {
+  display: block;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.device-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+/* =========================================
+   SECURITY ACTIONS
+   ========================================= */
+
+.actions-panel {
+  margin-top: 10px;
+
+  padding: 14px 16px;
+
+  background: rgba(7, 24, 39, 0.97);
+
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.action-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
+}
+
+.action-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.action-heading > div > span {
+  font-size: 23px;
+}
+
+.action-heading small {
+  color: var(--cyan);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.action-heading h2 {
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.action-heading > p {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* =========================================
+   SECURITY OPTIONS
+   ========================================= */
+
+.security-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.security-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-height: 66px;
+
+  text-align: left;
+
+  padding: 10px 12px;
+
+  background: #081c2d;
+
+  color: white;
+
+  border: 1px solid #1b4560;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.18s;
+}
+
+.security-option:hover {
+  border-color: var(--cyan);
+
+  background: #0c2940;
+
+  transform: translateY(-2px);
+}
+
+.option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #0d304a;
+
+  font-size: 20px;
+}
+
+.security-option strong {
+  display: block;
+  font-size: 11px;
+}
+
+.security-option small {
+  display: block;
+  color: var(--muted);
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+/* CORRECT SELECTION */
+
+.security-option.correct {
+  border-color: var(--green);
+
+  background: rgba(40, 223, 120, 0.13);
+
+  box-shadow: 0 0 15px rgba(40, 223, 120, 0.12);
+}
+
+/* WRONG SELECTION */
+
+.security-option.wrong {
+  border-color: var(--red);
+
+  background: rgba(255, 64, 92, 0.13);
+
+  box-shadow: 0 0 15px rgba(255, 64, 92, 0.12);
+}
+
+.security-option:disabled {
+  cursor: default;
+}
+
+/* =========================================
+   FEEDBACK
+   ========================================= */
+
+.feedback {
+  display: none;
+
+  margin-top: 9px;
+
+  padding: 9px 12px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+}
+
+.feedback.show {
+  display: block;
+}
+
+.feedback.correct {
+  border: 1px solid #23804c;
+
+  background: rgba(40, 223, 120, 0.09);
+}
+
+.feedback.wrong {
+  border: 1px solid #8a3441;
+
+  background: rgba(255, 64, 92, 0.09);
+}
+
+.feedback.correct strong {
+  color: var(--green);
+}
+
+.feedback.wrong strong {
+  color: var(--red);
+}
+
+.feedback p {
+  margin-top: 3px;
+  color: #bacbd6;
+}
+
+/* =========================================
+   WIN SCREEN
+   ========================================= */
+
+#winScreen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.success-animation {
+  width: 110px;
+  height: 110px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 60px;
+
+  border-radius: 50%;
+
+  border: 2px solid var(--green);
+
+  background: rgba(40, 223, 120, 0.08);
+
+  box-shadow: 0 0 40px rgba(40, 223, 120, 0.25);
+
+  animation: successPulse 1.6s infinite;
+}
+
+.mission-label {
+  color: var(--green);
+
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 900;
+
+  margin-top: 20px;
+}
+
+#winScreen h1,
+#loseScreen h1 {
+  font-size: clamp(40px, 6vw, 70px);
+
+  margin-top: 6px;
+}
+
+#winScreen h1 span {
+  color: var(--green);
+}
+
+.success-text {
+  color: #b8cad6;
+  margin-top: 8px;
+}
+
+/* =========================================
+   FLAG
+   ========================================= */
+
+.flag-box {
+  width: min(600px, 100%);
+
+  margin-top: 20px;
+
+  padding: 17px;
+
+  border: 1px solid var(--green);
+
+  border-radius: 13px;
+
+  background: rgba(40, 223, 120, 0.07);
+}
+
+.flag-box small {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+}
+
+.flag-box strong {
+  display: block;
+
+  color: var(--green);
+
+  font-family: monospace;
+
+  font-size: clamp(18px, 3vw, 27px);
+
+  margin-top: 7px;
+}
+
+/* =========================================
+   FINAL STATS
+   ========================================= */
+
+.final-stats {
+  width: min(600px, 100%);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin: 16px 0;
+}
+
+.final-stats div {
+  padding: 13px;
+
+  background: #081c2d;
+
+  border-radius: 10px;
+}
+
+.final-stats strong {
+  display: block;
+
+  color: var(--cyan);
+
+  font-size: 21px;
+}
+
+.final-stats span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 8px;
+
+  margin-top: 3px;
+}
+
+.secured-home {
+  display: flex;
+  gap: 18px;
+
+  font-size: 25px;
+
+  margin-bottom: 15px;
+}
+
+.prize-message {
+  color: var(--yellow);
+
+  font-weight: bold;
+
+  margin-bottom: 17px;
+}
+
+/* =========================================
+   LOSE SCREEN
+   ========================================= */
+
+#loseScreen {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.failure-icon {
+  font-size: 75px;
+
+  animation: dangerShake 0.5s infinite;
+}
+
+.danger-label {
+  color: var(--red);
+
+  letter-spacing: 3px;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  margin-top: 18px;
+}
+
+#loseScreen h1 span {
+  color: var(--red);
+}
+
+#loseScreen > p {
+  color: #b8cad6;
+
+  max-width: 600px;
+
+  margin: 12px auto;
+}
+
+.failed-score {
+  width: 220px;
+
+  margin: 20px;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 64, 92, 0.08);
+
+  border: 1px solid #80343f;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+.failed-score strong {
+  display: block;
+
+  color: var(--red);
+
+  font-size: 35px;
+
+  margin-top: 5px;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.55;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes successPulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    box-shadow: 0 0 30px rgba(40, 223, 120, 0.2);
+  }
+
+  50% {
+    transform: scale(1.07);
+
+    box-shadow: 0 0 60px rgba(40, 223, 120, 0.4);
+  }
+}
+
+@keyframes dangerShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+   ========================================= */
+
+@media (max-width: 900px) {
+  .game-container {
+    padding: 12px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stats {
+    width: 100%;
+  }
+
+  .stat {
+    flex: 1;
+  }
+
+  .devices {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .security-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .action-heading {
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+  .start-devices {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rules {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .devices {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .security-options {
+    grid-template-columns: 1fr;
+  }
+
+  .final-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .secured-home {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

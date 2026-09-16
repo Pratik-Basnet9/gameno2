@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Secure the Smart Home | IoT Security Challenge</title>
+
+    <meta
+      name="description"
+      content="Protect a smart home from an IoT hacker in this interactive cybersecurity challenge."
+    />
+
+    <link rel="stylesheet" href="game.css" />
+  </head>
+
+  <body>
+    <main class="game-container">
+      <!-- ============================= -->
+      <!-- START SCREEN -->
+      <!-- ============================= -->
+
+      <section id="startScreen" class="screen active">
+        <div class="brand">
+          <div class="shield">🛡️</div>
+
+          <h1>SECURE THE <span>SMART HOME</span></h1>
+
+          <p class="subtitle">IoT CYBERSECURITY CHALLENGE</p>
+        </div>
+
+        <div class="mission-box">
+          <div class="warning-icon">⚠️</div>
+
+          <h2>INCOMING CYBER ATTACK</h2>
+
+          <p>
+            An attacker has discovered your smart home network. Protect your IoT
+            devices before the hacker takes control.
+          </p>
+        </div>
+
+        <div class="start-devices">
+          <div class="device-preview">
+            <span>📷</span>
+            <p>Smart Camera</p>
+          </div>
+
+          <div class="device-preview">
+            <span>🔐</span>
+            <p>Smart Lock</p>
+          </div>
+
+          <div class="device-preview">
+            <span>💡</span>
+            <p>Smart Light</p>
+          </div>
+
+          <div class="device-preview">
+            <span>🔊</span>
+            <p>Smart Speaker</p>
+          </div>
+
+          <div class="device-preview">
+            <span>💻</span>
+            <p>Laptop</p>
+          </div>
+        </div>
+
+        <div class="instructions">
+          <h3>YOUR MISSION</h3>
+
+          <p>
+            Select the <strong>3 correct security protections</strong>
+            before the hacker compromises your smart home.
+          </p>
+
+          <div class="rules">
+            <div>
+              <strong>+10</strong>
+              <span>Correct Action</span>
+            </div>
+
+            <div>
+              <strong>-5</strong>
+              <span>Wrong Action</span>
+            </div>
+
+            <div>
+              <strong>+20</strong>
+              <span>Time Bonus</span>
+            </div>
+
+            <div>
+              <strong>60s</strong>
+              <span>Time Limit</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="startBtn" class="main-btn">START MISSION →</button>
+      </section>
+
+      <!-- ============================= -->
+      <!-- GAME SCREEN -->
+      <!-- ============================= -->
+
+      <section id="gameScreen" class="screen">
+        <header class="game-header">
+          <div class="game-title">
+            <span>🛡️</span>
+
+            <div>
+              <strong>SECURE THE SMART HOME</strong>
+              <small>IoT SECURITY SIMULATION</small>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <small>TIME</small>
+              <strong id="timer">60</strong>
+            </div>
+
+            <div class="stat">
+              <small>SCORE</small>
+              <strong id="score">0</strong>
+            </div>
+
+            <div class="stat">
+              <small>SECURED</small>
+              <strong> <span id="securedCount">0</span>/3 </strong>
+            </div>
+          </div>
+        </header>
+
+        <!-- ATTACK WARNING -->
+
+        <div class="attack-warning">
+          <span class="warning-pulse">⚠️</span>
+
+          <div>
+            <strong>ATTACK DETECTED</strong>
+
+            <p>
+              An attacker is scanning your smart home network! Choose three
+              protections.
+            </p>
+          </div>
+        </div>
+
+        <!-- HACKER PROGRESS -->
+
+        <section class="hacker-section">
+          <div class="meter-heading">
+            <div>
+              <span>👨‍💻</span>
+              <strong>HACKER PROGRESS</strong>
+            </div>
+
+            <strong id="hackerPercent">50%</strong>
+          </div>
+
+          <div class="hacker-meter">
+            <div id="hackerFill" class="hacker-fill"></div>
+          </div>
+
+          <div class="meter-labels">
+            <span>HOME SECURE</span>
+            <span>NETWORK COMPROMISED</span>
+          </div>
+        </section>
+
+        <!-- SMART HOME -->
+
+        <section class="home-panel">
+          <div class="section-title">
+            <span>🏠</span>
+            SMART HOME NETWORK
+          </div>
+
+          <div class="devices">
+            <div class="device-card" id="cameraDevice">
+              <div class="device-status">ONLINE</div>
+
+              <div class="device-icon">📷</div>
+
+              <strong>Smart Camera</strong>
+
+              <small>192.168.10.10</small>
+            </div>
+
+            <div class="device-card" id="lockDevice">
+              <div class="device-status">ONLINE</div>
+
+              <div class="device-icon">🔐</div>
+
+              <strong>Smart Door Lock</strong>
+
+              <small>192.168.10.11</small>
+            </div>
+
+            <div class="device-card" id="lightDevice">
+              <div class="device-status">ONLINE</div>
+
+              <div class="device-icon">💡</div>
+
+              <strong>Smart Light</strong>
+
+              <small>192.168.10.12</small>
+            </div>
+
+            <div class="device-card" id="speakerDevice">
+              <div class="device-status">ONLINE</div>
+
+              <div class="device-icon">🔊</div>
+
+              <strong>Smart Speaker</strong>
+
+              <small>192.168.10.13</small>
+            </div>
+
+            <div class="device-card" id="laptopDevice">
+              <div class="device-status">ONLINE</div>
+
+              <div class="device-icon">💻</div>
+
+              <strong>Laptop</strong>
+
+              <small>192.168.10.20</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECURITY ACTIONS -->
+
+        <section class="actions-panel">
+          <div class="action-heading">
+            <div>
+              <span>⚡</span>
+
+              <div>
+                <small>SECURITY RESPONSE</small>
+                <h2>CHOOSE 3 PROTECTIONS</h2>
+              </div>
+            </div>
+
+            <p>Think carefully — wrong actions help the hacker.</p>
+          </div>
+
+          <div class="security-options">
+            <button class="security-option" data-action="password">
+              <span class="option-icon">🔑</span>
+
+              <div>
+                <strong> Change Default Password </strong>
+
+                <small> Replace factory credentials </small>
+              </div>
+            </button>
+
+            <button class="security-option" data-action="firmware">
+              <span class="option-icon">⬆️</span>
+
+              <div>
+                <strong> Install Firmware Updates </strong>
+
+                <small> Patch device vulnerabilities </small>
+              </div>
+            </button>
+
+            <button class="security-option" data-action="vlan">
+              <span class="option-icon">🌐</span>
+
+              <div>
+                <strong> Put IoT Devices on IoT VLAN </strong>
+
+                <small> Separate IoT network traffic </small>
+              </div>
+            </button>
+
+            <button class="security-option" data-action="share">
+              <span class="option-icon">👥</span>
+
+              <div>
+                <strong> Share Password With a Friend </strong>
+
+                <small> Give someone your Wi-Fi password </small>
+              </div>
+            </button>
+
+            <button class="security-option" data-action="remote">
+              <span class="option-icon">🌍</span>
+
+              <div>
+                <strong> Leave Remote Access Open </strong>
+
+                <small> Allow access from anywhere </small>
+              </div>
+            </button>
+
+            <button class="security-option" data-action="samepassword">
+              <span class="option-icon">🔓</span>
+
+              <div>
+                <strong> Use Same Password Everywhere </strong>
+
+                <small> Use one password for all devices </small>
+              </div>
+            </button>
+          </div>
+
+          <!-- FEEDBACK -->
+
+          <div id="feedback" class="feedback">
+            <strong id="feedbackTitle"></strong>
+
+            <p id="feedbackText"></p>
+          </div>
+        </section>
+      </section>
+
+      <!-- ============================= -->
+      <!-- WIN SCREEN -->
+      <!-- ============================= -->
+
+      <section id="winScreen" class="screen">
+        <div class="success-animation">🛡️</div>
+
+        <p class="mission-label">MISSION SUCCESS</p>
+
+        <h1>SYSTEM <span>SECURED</span></h1>
+
+        <p class="success-text">
+          You stopped the attacker and protected the smart home network.
+        </p>
+
+        <div class="flag-box">
+          <small>SECURITY FLAG CAPTURED</small>
+
+          <strong> FLAG{IOT_HOME_SECURED} </strong>
+        </div>
+
+        <div class="final-stats">
+          <div>
+            <strong id="finalScore">0</strong>
+            <span>FINAL SCORE</span>
+          </div>
+
+          <div>
+            <strong id="finalTime">0s</strong>
+            <span>TIME USED</span>
+          </div>
+
+          <div>
+            <strong>3/3</strong>
+            <span>PROTECTIONS</span>
+          </div>
+        </div>
+
+        <div class="secured-home">
+          <span>📷 ✓</span>
+          <span>🔐 ✓</span>
+          <span>💡 ✓</span>
+          <span>🔊 ✓</span>
+          <span>💻 ✓</span>
+        </div>
+
+        <p class="prize-message">🏆 Highest score wins a prize!</p>
+
+        <button id="playAgainBtn" class="main-btn">PLAY AGAIN ↻</button>
+      </section>
+
+      <!-- ============================= -->
+      <!-- GAME OVER SCREEN -->
+      <!-- ============================= -->
+
+      <section id="loseScreen" class="screen">
+        <div class="failure-icon">🚨</div>
+
+        <p class="danger-label">SECURITY BREACH</p>
+
+        <h1>SYSTEM <span>COMPROMISED</span></h1>
+
+        <p>
+          The hacker reached the smart home devices. Review your security
+          choices and try again.
+        </p>
+
+        <div class="failed-score">
+          SCORE
+
+          <strong id="loseScore"> 0 </strong>
+        </div>
+
+        <button id="retryBtn" class="main-btn">RETRY MISSION ↻</button>
+      </section>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
